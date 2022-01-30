@@ -1,0 +1,4 @@
+name: SmokeOnTeleport
+version: '${project.version}'
+main: com.akyrossoftware.plugins.smokeonteleport.SmokeOnTeleport
+api-version: 1.18
