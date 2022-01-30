@@ -1,0 +1,7 @@
+particle-effects:
+  particle: SMOKE_NORMAL
+  offsetX: .02
+  offsetY: .02
+  offsetZ: .02
+  speed: .02
+  count: 50
