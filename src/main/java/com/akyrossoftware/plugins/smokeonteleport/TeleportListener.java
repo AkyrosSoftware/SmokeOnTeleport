@@ -42,7 +42,7 @@ public class TeleportListener implements Listener {
         if(event.getTo() != null){
             world.spawnParticle(particle, event.getTo(),
                     count, offsetX, offsetY,
-                    offsetZ, count);
+                    offsetZ, speed);
         }
     }
 }
