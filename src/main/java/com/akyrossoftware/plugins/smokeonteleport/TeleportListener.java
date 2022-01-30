@@ -25,12 +25,12 @@ public class TeleportListener implements Listener {
                 + " teleported");
         World world = event.getPlayer().getWorld();
         world.spawnParticle(particle, event.getFrom(),
-                25, 10.0, 10.0,
-                10.0, 10.0);
+                25, .01, .01,
+                .01, .01);
         if(event.getTo() != null){
             world.spawnParticle(particle, event.getFrom(),
-                    25, 10.0, 10.0,
-                    10.0, 10.0);
+                    25, .01, .01,
+                    .01, .01);
         }
     }
 }
