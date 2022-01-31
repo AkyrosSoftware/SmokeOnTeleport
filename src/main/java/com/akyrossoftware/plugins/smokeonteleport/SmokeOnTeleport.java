@@ -1,6 +1,5 @@
 package com.akyrossoftware.plugins.smokeonteleport;
 
-import org.bukkit.Particle;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -12,16 +11,11 @@ public final class SmokeOnTeleport extends JavaPlugin {
     public void onEnable() {
         PluginManager pm = this.getServer().getPluginManager();
         reloadConfig();
-        double offsetX = configHandler.getConfigSection().getDouble("offsetX", .01);
-        double offsetY = configHandler.getConfigSection().getDouble("offsetY", .01);
-        double offsetZ = configHandler.getConfigSection().getDouble("offsetZ", .01);
-        double speed = configHandler.getConfigSection().getDouble("speed", .01);
-        int count = configHandler.getConfigSection().getInt("count", 25);
-        String particleName = configHandler.getConfigSection().getString("particle", "SMOKE_NORMAL");
-        Particle particle = Particle.valueOf(particleName);
+        
+        this.getCommand("smoketp").setExecutor(new CommandHandler(this));
+        
         TeleportListener listener = new TeleportListener(
-                this, particle, count,
-                offsetX, offsetY, offsetZ, speed
+                this, configHandler
         );
         pm.registerEvents(listener, this);
     }
