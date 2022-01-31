@@ -34,8 +34,8 @@ public class ConfigHandler {
         }
     }
 
-    public ConfigurationSection getConfigSection(){
-        return yamlFile.getConfigurationSection("particle-effects");
+    public ConfigurationSection getConfigSection(String path){
+        return yamlFile.getConfigurationSection(path);
     }
     
     private File createDataFolder() {

@@ -2,6 +2,7 @@ package com.akyrossoftware.plugins.smokeonteleport;
 
 import org.bukkit.Particle;
 import org.bukkit.World;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -23,12 +24,13 @@ public class TeleportListener implements Listener {
                 + event.getPlayer().getDisplayName()
                 + " teleported");
         World world = event.getPlayer().getWorld();
-        double offsetX = handler.getConfigSection().getDouble("offsetX", .01);
-        double offsetY = handler.getConfigSection().getDouble("offsetY", .01);
-        double offsetZ = handler.getConfigSection().getDouble("offsetZ", .01);
-        double speed = handler.getConfigSection().getDouble("speed", .01);
-        int count = handler.getConfigSection().getInt("count", 25);
-        String particleName = handler.getConfigSection().getString("particle", "SMOKE_NORMAL").toUpperCase();
+        ConfigurationSection section = handler.getConfigSection("particle-effects");
+        double offsetX = section.getDouble("offsetX", .01);
+        double offsetY = section.getDouble("offsetY", .01);
+        double offsetZ = section.getDouble("offsetZ", .01);
+        double speed = section.getDouble("speed", .01);
+        int count = section.getInt("count", 25);
+        String particleName = section.getString("particle", "SMOKE_NORMAL").toUpperCase();
         Particle particle = Particle.valueOf(particleName);
         world.spawnParticle(particle, event.getFrom(),
                 count, offsetX, offsetY,
