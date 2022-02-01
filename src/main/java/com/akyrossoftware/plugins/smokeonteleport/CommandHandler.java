@@ -86,8 +86,12 @@ public class CommandHandler implements CommandExecutor, TabCompleter
                 if(!particleCompletions.isEmpty()){
                     return particleCompletions;
                 }
+                return particles;
             }
-            return particles;
+            else{
+                return null;
+            }
+            
         }
         else if(strings[0].equals("reload")){
             return null;
