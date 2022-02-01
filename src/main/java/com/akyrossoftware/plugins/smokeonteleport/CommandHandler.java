@@ -86,6 +86,9 @@ public class CommandHandler implements CommandExecutor, TabCompleter
             }
             return particles;
         }
+        else if(strings[0].equals("reload")){
+            return null;
+        }
         //create new array
         final List<String> completions = new ArrayList<>();
         //copy matches of first argument from list (ex: if first arg is 'm' will return just 'minecraft')
