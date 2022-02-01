@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 
@@ -46,5 +47,9 @@ public class ConfigHandler {
             }
         }
         return folder;
+    }
+    
+    public FileConfiguration getConfig(){
+        return yamlFile;
     }
 }

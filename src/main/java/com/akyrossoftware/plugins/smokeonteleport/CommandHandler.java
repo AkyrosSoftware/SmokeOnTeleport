@@ -1,12 +1,14 @@
 package com.akyrossoftware.plugins.smokeonteleport;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import org.bukkit.Particle;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
+import org.bukkit.util.StringUtil;
 
 
 public class CommandHandler implements CommandExecutor, TabCompleter
@@ -75,10 +77,21 @@ public class CommandHandler implements CommandExecutor, TabCompleter
             return commands;
         }
         else if(strings[0].equals("particle")){
+            if(strings.length > 1){
+                final List<String> particleCompletions = new ArrayList<>();
+                StringUtil.copyPartialMatches(strings[1], particles, particleCompletions);
+                if(!particleCompletions.isEmpty()){
+                    return particleCompletions;
+                }
+            }
             return particles;
         }
-        else{
-            return null;
-        }
+        //create new array
+        final List<String> completions = new ArrayList<>();
+        //copy matches of first argument from list (ex: if first arg is 'm' will return just 'minecraft')
+        StringUtil.copyPartialMatches(strings[0], commands, completions);
+        //sort the list
+        Collections.sort(completions);
+        return completions;
     }
 }
