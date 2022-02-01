@@ -77,7 +77,10 @@ public class CommandHandler implements CommandExecutor, TabCompleter
             return commands;
         }
         else if(strings[0].equals("particle")){
-            if(strings.length > 1){
+            if(strings.length == 1){
+                if(particles.contains(strings[1])){
+                    return null;
+                }
                 final List<String> particleCompletions = new ArrayList<>();
                 StringUtil.copyPartialMatches(strings[1], particles, particleCompletions);
                 if(!particleCompletions.isEmpty()){
