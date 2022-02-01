@@ -20,9 +20,6 @@ public class TeleportListener implements Listener {
 
     @EventHandler(priority = EventPriority.NORMAL)
     public void onTeleport(PlayerTeleportEvent event){
-        plugin.getLogger().info("Player: "
-                + event.getPlayer().getDisplayName()
-                + " teleported");
         World world = event.getPlayer().getWorld();
         ConfigurationSection section = handler.getConfigSection("particle-effects");
         double offsetX = section.getDouble("offsetX", .01);

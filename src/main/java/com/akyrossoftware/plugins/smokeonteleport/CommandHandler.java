@@ -26,7 +26,7 @@ public class CommandHandler implements CommandExecutor, TabCompleter
         Particle[] enumList = Particle.values();
         for (Particle particle : enumList)
         {
-            particles.add(particle.toString().toUpperCase());
+            particles.add(particle.toString().toLowerCase());
         }
     }
 
@@ -45,9 +45,9 @@ public class CommandHandler implements CommandExecutor, TabCompleter
                 }
                 case "particle":{
                     if(strings.length >= 2){
-                        String nextArg = strings[1].toUpperCase();
+                        String nextArg = strings[1].toLowerCase();
                         if(particles.contains(nextArg)){
-                            plugin.getConfig().getConfigurationSection("particle-effects").set("particle", nextArg);
+                            plugin.getConfig().getConfigurationSection("particle-effects").set("particle", nextArg.toUpperCase());
                             plugin.saveConfig();
                             plugin.reloadConfig();
                             return true;
@@ -91,7 +91,7 @@ public class CommandHandler implements CommandExecutor, TabCompleter
         }
         //create new array
         final List<String> completions = new ArrayList<>();
-        //copy matches of first argument from list (ex: if first arg is 'm' will return just 'minecraft')
+        //copy matches of first argument from list
         StringUtil.copyPartialMatches(strings[0], commands, completions);
         //sort the list
         Collections.sort(completions);
