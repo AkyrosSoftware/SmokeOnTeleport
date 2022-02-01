@@ -77,7 +77,7 @@ public class CommandHandler implements CommandExecutor, TabCompleter
             return commands;
         }
         else if(strings[0].equals("particle")){
-            if(strings.length == 1){
+            if(strings.length == 2){
                 if(particles.contains(strings[1])){
                     return null;
                 }
