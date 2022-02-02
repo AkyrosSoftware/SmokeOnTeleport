@@ -48,8 +48,6 @@ public class CommandHandler implements CommandExecutor, TabCompleter
                         String nextArg = strings[1].toLowerCase();
                         if(particles.contains(nextArg)){
                             plugin.getConfig().getConfigurationSection("particle-effects").set("particle", nextArg.toUpperCase());
-                            plugin.saveConfig();
-                            plugin.reloadConfig();
                             return true;
                         }
                         else{
