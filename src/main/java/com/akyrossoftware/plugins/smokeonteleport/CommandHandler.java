@@ -79,7 +79,7 @@ public class CommandHandler implements CommandExecutor, TabCompleter
         else if(strings[0].equals("particle")){
             if(strings.length == 2){
                 if(particles.contains(strings[1])){
-                    return null;
+                    return Collections.emptyList();
                 }
                 final List<String> particleCompletions = new ArrayList<>();
                 StringUtil.copyPartialMatches(strings[1], particles, particleCompletions);
@@ -89,12 +89,12 @@ public class CommandHandler implements CommandExecutor, TabCompleter
                 return particles;
             }
             else{
-                return null;
+                return Collections.emptyList();
             }
             
         }
         else if(strings[0].equals("reload")){
-            return null;
+            return Collections.emptyList();
         }
         //create new array
         final List<String> completions = new ArrayList<>();
